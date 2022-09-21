@@ -16,6 +16,7 @@ setup(
         "scipy",
         "numpy",
         "icecream",
+        "latex_table @ git+https://github.com/leoliu0/latex_table",
     ],
     scripts=["gen_ss/gen_ss"],
     classifiers=[
