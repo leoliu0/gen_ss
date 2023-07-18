@@ -1,4 +1,4 @@
-#!/bin/python
+#!python
 from latex_table import latex, star
 from pprint import pprint
 

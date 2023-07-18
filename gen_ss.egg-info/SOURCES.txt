@@ -1,0 +1,7 @@
+setup.py
+gen_ss/gen_ss
+gen_ss.egg-info/PKG-INFO
+gen_ss.egg-info/SOURCES.txt
+gen_ss.egg-info/dependency_links.txt
+gen_ss.egg-info/requires.txt
+gen_ss.egg-info/top_level.txt

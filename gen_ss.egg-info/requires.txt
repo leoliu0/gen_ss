@@ -1,0 +1,6 @@
+latex_table
+pandas
+scipy
+numpy
+icecream
+latex_table@ git+https://github.com/leoliu0/latex_table
