@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="gen_ss",  # How you named your package folder (MyLib)
     packages=["gen_ss"],  # Chose the same as "name"
-    version="0.1",  # Start with a small number and increase it with every change you make
+    version="0.2",  # Start with a small number and increase it with every change you make
     license="MIT",  # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     description="",  # Give a short description about your library
     author="Leo Liu",  # Type in your name
@@ -16,7 +16,7 @@ setup(
         "scipy",
         "numpy",
         "icecream",
-        "latex_table @ git+https://github.com/leoliu0/latex_table",
+        "latex_table@git+https://github.com/leoliu0/latex_table",
     ],
     scripts=["gen_ss/gen_ss"],
     classifiers=[
