@@ -6,7 +6,6 @@ import sys
 import pandas as pd
 from scipy.stats import ttest_ind
 from collections import OrderedDict
-import numpy as np
 
 import argparse
 
@@ -22,14 +21,6 @@ def getrow(file, subsample, variables):
         df = df2[df2["matched"] == 1]
     else:
         df = pd.read_stata(file)
-    try:
-        df["XRD"] = df["XRD"] / df["AT"]
-        df["SALE"] = np.log(df["SALE"] + 1)
-        df["score"] = np.log(df["score"] + 1)
-        df["hazard"] = np.log(df["hazard"] + 1)
-
-    except:
-        pass
     if args.subsample:
         treated = df[df[subsample] == 1]
         nontreated = df[df[subsample] == 0]
@@ -122,16 +113,28 @@ if __name__ == "__main__":
         # content = content.replace('&&','&',1)
         tb.write_plain_row(content)
 
-    print(
+    if args.subsample:
+        print(
         r"""
     \begin{tabular}{lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}l}
-    &\multicolumn{8}{c}{\textbf{SE-CEOs}}&\multicolumn{8}{c}{\textbf{SE-CEOs}} \\
+    &\multicolumn{8}{c}{\textbf{Sample 1}}&\multicolumn{8}{c}{\textbf{Sample 2}} \\
     \cline{2-8} \cline{10-16}
     &N && Mean && Median && std. dev && N && Mean && Median && std. dev &&  Diff. && t-stat\\
     \hline
     """,
         file=sys.stderr,
     )
+    else:
+        print(
+        r"""
+    \begin{tabular}{lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}lr@{}l}
+            \hline
+    &N && Mean && Median && std. dev \\
+    \hline
+    """,
+        file=sys.stderr,
+    )
+
     tb.hline()
     if args.output:
         tb.write_table(args.output, "w")
