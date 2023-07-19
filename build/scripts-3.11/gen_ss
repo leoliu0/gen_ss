@@ -92,8 +92,9 @@ if __name__ == "__main__":
     change_name = dict()
     with open(args.change_varlist) as f:
         for line in f.readlines():
-            v, k = line.split(" ", 1)
-            change_name[v.strip().replace('\\\\','\\')] = k.strip().replace('\\\\','\\')
+            if line.strip(): 
+                v, k = line.split(" ", 1)
+                change_name[v.strip().replace('\\\\','\\')] = k.strip().replace('\\\\','\\')
 
     with open(args.varlist) as f:
         variables = [x.strip() for x in f.readlines()]
